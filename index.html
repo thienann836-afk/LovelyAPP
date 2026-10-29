@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#101a35">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Bản Lĩnh">
+<meta name="description" content="Theo dõi mục tiêu cá nhân, rèn tập trung và tổng kết mỗi ngày.">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon-192.png">
+<title>Bản Lĩnh — Mỗi ngày tốt hơn</title>
+<style>
+:root{--bg:#0b1224;--panel:#131f39;--panel2:#1a2948;--line:#2a3b60;--text:#f4f7ff;--muted:#aab8d4;--blue:#5a8cff;--cyan:#47dbc2;--gold:#ffd477;--danger:#ff9a9a}
+*{box-sizing:border-box}html{background:var(--bg)}body{margin:0;background:radial-gradient(ellipse at 50% -10%,#243b69 0,transparent 48%),var(--bg);color:var(--text);font:16px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;min-height:100vh;padding-bottom:calc(86px + env(safe-area-inset-bottom))}
+button,input,textarea,select{font:inherit}button{cursor:pointer;border:0}
+header{padding:calc(18px + env(safe-area-inset-top)) 18px 16px;max-width:760px;margin:auto}
+.brand{display:flex;justify-content:space-between;align-items:center;gap:12px}.brand h1{font-size:24px;margin:0;letter-spacing:-.5px}.brand p{margin:3px 0 0;color:var(--muted);font-size:13px}.pill{font-size:12px;padding:6px 10px;border-radius:99px;background:#20345a;color:#c8d8ff;border:1px solid #385184}
+main{max-width:760px;margin:auto;padding:0 14px}.hero{border:1px solid #31456f;border-radius:24px;padding:20px;background:linear-gradient(145deg,rgba(49,80,133,.78),rgba(18,31,57,.94) 60%),#14213d;position:relative;overflow:hidden}
+.hero:after{content:"";position:absolute;width:190px;height:190px;right:-60px;top:-75px;border-radius:50%;background:radial-gradient(circle,#5e91ff55,transparent 68%);pointer-events:none}
+.eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:1.3px;color:#b7c9f4}.hero h2{font-size:25px;line-height:1.15;margin:8px 0}.hero p{color:#d0dcf5;margin:0 0 18px;max-width:430px;font-size:14px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.stat{background:#0b1630a8;border:1px solid #38517d;border-radius:15px;padding:12px 10px}.stat strong{font-size:22px;display:block}.stat span{font-size:11px;color:var(--muted)}
+.progress-wrap{margin-top:18px}.progress-label{display:flex;justify-content:space-between;font-size:12px;color:#d6e1f8;margin-bottom:7px}.progress{height:9px;border-radius:99px;background:#091329;overflow:hidden}.progress div{height:100%;background:linear-gradient(90deg,var(--cyan),var(--blue));border-radius:99px;transition:width .25s}
+.section-head{display:flex;align-items:center;justify-content:space-between;margin:24px 3px 10px}.section-head h3{font-size:17px;margin:0}.section-head small{color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.card{background:linear-gradient(145deg,#172642,#101a30);border:1px solid var(--line);border-radius:18px;padding:15px;min-width:0}.card h4{margin:0 0 6px;font-size:15px}.card p{margin:0;color:var(--muted);font-size:12px}.feature-icon{font-size:25px;margin-bottom:9px;display:block}.btn{border-radius:12px;padding:11px 14px;background:linear-gradient(100deg,#4f82ff,#6a73f6);color:white;font-weight:650;width:100%;margin-top:12px}.btn.secondary{background:#203354;border:1px solid #3c527d}.btn.ghost{background:transparent;border:1px solid #40557e;color:#dbe6ff}.btn.good{background:linear-gradient(100deg,#159c8d,#38bda8)}.btn.small{width:auto;margin:0;padding:8px 12px;font-size:12px}
+.level-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.level{border-radius:15px;overflow:hidden;border:1px solid var(--line);background:#111d35}.level-art{height:83px;display:flex;align-items:center;justify-content:center;font-size:35px;background:linear-gradient(145deg,#203d6a,#121d35);position:relative}.level-art:after{content:"";position:absolute;inset:auto 0 0;height:35px;background:linear-gradient(transparent,#111d35)}.level-body{padding:9px}.level-body strong{font-size:12px;display:block}.level-body span{font-size:11px;color:var(--muted)}.level.active{border-color:var(--cyan);box-shadow:0 0 0 1px #47dbc244}.level.locked{opacity:.55}
+.nav{position:fixed;bottom:0;left:0;right:0;z-index:5;padding:8px 8px calc(8px + env(safe-area-inset-bottom));background:#0b1224ed;backdrop-filter:blur(18px);border-top:1px solid #263655;display:flex;justify-content:center}.nav-inner{width:100%;max-width:760px;display:grid;grid-template-columns:repeat(5,1fr);gap:4px}.nav button{background:transparent;color:#91a2c4;font-size:10px;padding:7px 1px;border-radius:12px}.nav button span{display:block;font-size:20px;margin-bottom:2px}.nav button.active{color:white;background:#20365b}
+.page{display:none}.page.active{display:block}.panel{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:16px;margin-bottom:12px}.panel h3{margin:0 0 12px;font-size:17px}.field{display:block;margin:12px 0}.field label{display:block;font-size:12px;color:#b9c7e1;margin-bottom:6px}.field input,.field textarea,.field select{width:100%;background:#0b152a;border:1px solid #304568;border-radius:11px;padding:11px;color:var(--text);outline:none}.field textarea{min-height:90px;resize:vertical}.field input:focus,.field textarea:focus{border-color:var(--blue)}.choice-row{display:flex;gap:8px;flex-wrap:wrap}.choice{background:#1d2d4c;border:1px solid #344b74;color:#d9e4ff;border-radius:12px;padding:9px 12px;font-size:13px}.choice.selected{border-color:var(--cyan);background:#174348}
+.notice{font-size:12px;color:var(--muted);padding:12px;border-radius:12px;background:#111d34;border:1px solid #263b60}.level-big{font-size:58px;text-align:center;margin:6px}.center{text-align:center}.muted{color:var(--muted)}.hide{display:none!important}
+.game-box{min-height:190px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:13px;background:radial-gradient(ellipse,#233e6b,#0d172c);border-radius:16px;border:1px solid #324b77;padding:18px;text-align:center}.game-number{font-size:44px;font-weight:800;letter-spacing:6px}.game-symbol{font-size:42px}.answer-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;width:100%}.answer-grid button{padding:15px;border-radius:12px;background:#22375c;color:white;border:1px solid #405a87}.toast{position:fixed;top:calc(12px + env(safe-area-inset-top));left:50%;transform:translateX(-50%);z-index:20;background:#e4fff7;color:#07352e;border-radius:12px;padding:10px 15px;font-size:13px;font-weight:650;box-shadow:0 8px 30px #0005;max-width:90%;display:none}
+@media(min-width:600px){header{padding-top:28px}.hero{padding:26px}.grid{gap:12px}.level-art{height:112px}.level-art{font-size:42px}}
+</style>
+</head>
+<body>
+<div id="toast" class="toast" role="status"></div>
+<header><div class="brand"><div><h1>🏔️ Bản Lĩnh</h1><p>Mỗi ngày tốt hơn một chút.</p></div><span class="pill" id="today-pill">HÔM NAY</span></div></header>
+<main>
+<section id="home" class="page active">
+  <div class="hero">
+    <div class="eyebrow">HÀNH TRÌNH CỦA BẠN</div>
+    <h2 id="greeting">Bạn đang xây dựng sự tự chủ.</h2>
+    <p>Không cần hoàn hảo. Chỉ cần chủ động chọn điều tốt cho mình, từng ngày một.</p>
+    <div class="stats">
+      <div class="stat"><strong id="streak">0</strong><span>Ngày theo mục tiêu</span></div>
+      <div class="stat"><strong id="level-number">1</strong><span>Level hiện tại</span></div>
+      <div class="stat"><strong id="focus-total">0</strong><span>Phút tập trung</span></div>
+    </div>
+    <div class="progress-wrap"><div class="progress-label"><span id="level-name">Level 1 · Khởi hành</span><span id="level-progress-label">0/3 ngày</span></div><div class="progress"><div id="level-progress" style="width:0%"></div></div></div>
+    <button class="btn good" id="checkin-btn" onclick="checkIn()">✓  Đánh dấu hôm nay đã hoàn thành</button>
+    <button class="btn secondary" onclick="showPage('journal')">Viết nhật ký cuối ngày →</button>
+  </div>
+  <div class="section-head"><h3>Chọn bước tiếp theo</h3><small>5–10 phút cũng có ích</small></div>
+  <div class="grid">
+    <div class="card"><span class="feature-icon">🎯</span><h4>Rèn tập trung</h4><p>Trò chơi ngắn giúp bạn luyện chú ý và phản xạ.</p><button class="btn secondary" onclick="showPage('focus')">Chơi ngay</button></div>
+    <div class="card"><span class="feature-icon">🌙</span><h4>Khép lại ngày</h4><p>Nhìn lại điều tốt, điều khó và bài học.</p><button class="btn secondary" onclick="showPage('journal')">Tổng kết</button></div>
+    <div class="card"><span class="feature-icon">🗓️</span><h4>Chuẩn bị ngày mai</h4><p>Chọn một việc quan trọng và giảm cám dỗ.</p><button class="btn secondary" onclick="showPage('plan')">Lập kế hoạch</button></div>
+    <div class="card"><span class="feature-icon">🏆</span><h4>Mốc level</h4><p>Mở khóa cảnh minh họa theo tiến trình của bạn.</p><button class="btn secondary" onclick="showPage('levels')">Xem hành trình</button></div>
+  </div>
+  <div class="section-head"><h3>Một lời nhắc cho hôm nay</h3></div>
+  <div class="panel"><p id="quote" style="margin:0;font-size:15px">“Bạn không cần thắng cả cuộc đời hôm nay. Chỉ cần thắng lựa chọn tiếp theo.”</p><p class="muted" style="font-size:12px;margin-bottom:0">Tiến bộ không phải đường thẳng. Nếu lỡ một lần, hãy học từ nó thay vì tự trách.</p></div>
+</section>
+
+<section id="levels" class="page">
+ <div class="section-head"><h3>🏆 Hành trình level</h3><small>Tiến bộ theo ngày</small></div>
+ <div class="panel center"><div class="level-big" id="current-art">🌄</div><h3 id="current-level-title">Level 1 · Khởi hành</h3><p class="muted" id="current-level-desc">Bạn đã bắt đầu, đó là bước quan trọng.</p><div class="progress"><div id="level-progress2" style="width:0%"></div></div><p class="muted" id="next-milestone">Còn 3 ngày để mở mốc tiếp theo.</p></div>
+ <div class="level-list" id="level-list"></div>
+ <div class="notice" style="margin-top:12px">Các mốc là phần thưởng khích lệ, không phải thước đo giá trị của bạn. Chọn mục tiêu phù hợp và điều chỉnh nếu cần.</div>
+</section>
+
+<section id="focus" class="page">
+ <div class="section-head"><h3>🎯 Phòng tập trung</h3><small>Chơi 2–5 phút</small></div>
+ <div class="panel"><h3>1. Đếm ngược tập trung</h3><p class="muted">Chọn một việc duy nhất. Nhìn vào vòng đếm ngược, không chuyển ứng dụng trong thời gian này.</p><div class="game-box"><div id="timer-display" style="font-size:44px;font-weight:800">02:00</div><div id="timer-message" class="muted">Sẵn sàng bắt đầu?</div></div><div class="choice-row" style="margin-top:12px"><button class="choice selected" onclick="setTimer(2,this)">2 phút</button><button class="choice" onclick="setTimer(5,this)">5 phút</button><button class="choice" onclick="setTimer(10,this)">10 phút</button></div><button id="timer-start" class="btn" onclick="toggleTimer()">Bắt đầu</button></div>
+ <div class="panel"><h3>2. Trò chơi trí nhớ</h3><p class="muted">Nhớ chuỗi số ngắn rồi chọn lại. Tăng dần độ khó theo lượt.</p><div class="game-box"><div id="memory-prompt">Nhấn bắt đầu để xem chuỗi số.</div><div id="memory-inputs" class="answer-grid hide"></div><div id="memory-result" class="muted"></div></div><button class="btn secondary" id="memory-start" onclick="startMemory()">Bắt đầu trò chơi</button></div>
+ <div class="panel"><h3>3. Chọn đúng màu chữ</h3><p class="muted">Bỏ qua ý nghĩa của từ, hãy chọn màu mực được hiển thị. Bài tập ngắn để thực hành chú ý.</p><div class="game-box"><div id="color-word" class="game-symbol">🔵</div><div id="color-options" class="answer-grid"><button onclick="colorAnswer(0)">Xanh dương</button><button onclick="colorAnswer(1)">Đỏ</button><button onclick="colorAnswer(2)">Xanh lá</button><button onclick="colorAnswer(3)">Vàng</button></div><div id="color-result" class="muted">Chọn màu mực của hình phía trên.</div></div><button class="btn secondary" onclick="newColorRound()">Lượt mới</button></div>
+</section>
+
+<section id="journal" class="page">
+ <div class="section-head"><h3>🌙 Nhật ký cuối ngày</h3><small id="journal-date"></small></div>
+ <div class="panel"><h3>Nhìn lại hôm nay</h3><p class="muted">Viết ngắn cũng được. Không cần đánh giá bản thân theo kiểu tốt/xấu.</p>
+ <div class="field"><label>Hôm nay mình cảm thấy thế nào?</label><div class="choice-row" id="mood-choices"><button class="choice" onclick="setMood('😄 Tốt',this)">😄 Tốt</button><button class="choice" onclick="setMood('🙂 Ổn',this)">🙂 Ổn</button><button class="choice" onclick="setMood('😐 Bình thường',this)">😐 Bình thường</button><button class="choice" onclick="setMood('😣 Khó khăn',this)">😣 Khó khăn</button></div></div>
+ <div class="field"><label>Điều gì mình làm tốt hôm nay?</label><textarea id="journal-good" placeholder="Ví dụ: hoàn thành bài tập, đi chạy, dừng lại trước một cám dỗ..."></textarea></div>
+ <div class="field"><label>Khoảnh khắc nào khó khăn hoặc kích hoạt ham muốn?</label><textarea id="journal-trigger" placeholder="Thời điểm, cảm xúc, nơi chốn hoặc việc vừa xảy ra..."></textarea></div>
+ <div class="field"><label>Lần sau mình sẽ thử điều gì?</label><textarea id="journal-learn" placeholder="Ví dụ: để điện thoại ngoài giường, đi bộ 5 phút, nhắn tin cho bạn..."></textarea></div>
+ <button class="btn good" onclick="saveJournal()">Lưu nhật ký trên thiết bị</button></div>
+ <div class="panel"><h3>Nhắc nhở cuối ngày</h3><p class="muted">Ứng dụng có thể nhắc khi bạn mở nó. Trình duyệt không đảm bảo thông báo chạy đúng giờ nếu bạn chưa mở web.</p><div class="field"><label>Giờ tổng kết mong muốn</label><input type="time" id="reminder-time" value="21:30"></div><button class="btn secondary" onclick="saveReminder()">Lưu giờ nhắc</button><button class="btn ghost" onclick="requestNotification()">Thử bật thông báo (nếu trình duyệt hỗ trợ)</button><p class="muted" id="reminder-status" style="font-size:12px"></p></div>
+</section>
+
+<section id="plan" class="page">
+ <div class="section-head"><h3>🗓️ Chuẩn bị ngày mai</h3><small id="plan-date"></small></div>
+ <div class="panel"><h3>Thiết kế một ngày dễ thành công hơn</h3><p class="muted">Chọn vài việc nhỏ có thể làm thật. Đừng lập kế hoạch quá tải.</p>
+ <div class="field"><label>Việc quan trọng nhất ngày mai</label><input id="plan-main" placeholder="Ví dụ: học SQL 30 phút"></div>
+ <div class="field"><label>Việc giúp cơ thể khỏe hơn</label><input id="plan-body" placeholder="Ví dụ: đi bộ hoặc chạy nhẹ"></div>
+ <div class="field"><label>Khi ham muốn/cám dỗ xuất hiện, mình sẽ…</label><input id="plan-urge" placeholder="Ví dụ: đứng dậy, rời phòng, chờ 10 phút"></div>
+ <div class="field"><label>Môi trường mình sẽ chuẩn bị</label><textarea id="plan-env" placeholder="Ví dụ: sạc điện thoại xa giường, chặn nội dung gây xao nhãng"></textarea></div>
+ <button class="btn good" onclick="savePlan()">Lưu kế hoạch ngày mai</button></div>
+ <div class="panel"><h3>🧯 Kế hoạch 10 phút khi có cám dỗ</h3><ol class="muted" style="padding-left:20px"><li>Gọi tên cảm giác: “Mình đang có ham muốn, cảm giác này rồi sẽ thay đổi.”</li><li>Đứng dậy, đổi chỗ và để điện thoại xuống.</li><li>Uống nước, đi bộ hoặc làm 10 nhịp thở chậm.</li><li>Chọn một hành động đã chuẩn bị sẵn trong kế hoạch.</li></ol><p class="muted" style="font-size:12px">Mục tiêu là chủ động với hành vi của mình, không phải ghét bỏ cơ thể hay cảm xúc tự nhiên.</p></div>
+</section>
+
+<section id="settings" class="page">
+ <div class="section-head"><h3>⚙️ Cài đặt & dữ liệu</h3></div>
+ <div class="panel"><h3>Mục tiêu cá nhân</h3><p class="muted">Chọn cách theo dõi phù hợp với bạn. Đây là công cụ tự quản lý, không phải chẩn đoán y khoa.</p><div class="field"><label>Tên mục tiêu (chỉ lưu trên máy này)</label><input id="goal-name" value="Chủ động với thói quen của mình"></div><button class="btn secondary" onclick="saveGoal()">Lưu mục tiêu</button></div>
+ <div class="panel"><h3>Quyền riêng tư</h3><p class="muted">Dữ liệu được lưu bằng bộ nhớ cục bộ của trình duyệt trên thiết bị này. Không có tài khoản và không gửi dữ liệu lên máy chủ. Nếu xóa dữ liệu Safari, thông tin có thể mất.</p><button class="btn secondary" onclick="exportData()">Xuất bản sao dữ liệu (.json)</button><div class="field"><label>Khôi phục bản sao JSON</label><input id="import-file" type="file" accept="application/json"></div><button class="btn ghost" onclick="importData()">Nhập bản sao</button></div>
+ <div class="panel"><h3>Đặt lại dữ liệu</h3><p class="muted">Chỉ làm nếu thật sự muốn xóa toàn bộ lịch sử trên thiết bị này.</p><button class="btn" style="background:#773747" onclick="resetData()">Xóa toàn bộ dữ liệu</button></div>
+ <div class="notice">Bản đầu tiên hoàn toàn miễn phí, không có quảng cáo và không cần API trả phí. Hãy xuất bản sao định kỳ nếu nhật ký quan trọng với bạn.</div>
+</section>
+</main>
+<nav class="nav"><div class="nav-inner">
+<button class="active" data-page="home" onclick="showPage('home')"><span>⌂</span>Trang chủ</button>
+<button data-page="levels" onclick="showPage('levels')"><span>🏆</span>Level</button>
+<button data-page="focus" onclick="showPage('focus')"><span>🎯</span>Tập trung</button>
+<button data-page="journal" onclick="showPage('journal')"><span>🌙</span>Cuối ngày</button>
+<button data-page="plan" onclick="showPage('plan')"><span>🗓️</span>Ngày mai</button>
+</div></nav>
+<script>
+const KEY='banlinh_app_v1';
+const levels=[
+ {days:0,name:'Khởi hành',title:'Bắt đầu',art:'🌄',desc:'Bạn đã bắt đầu. Chỉ cần tập trung vào lựa chọn kế tiếp.'},
+ {days:3,name:'Kiên trì',title:'Người gieo hạt',art:'🌱',desc:'Những thay đổi nhỏ bắt đầu bén rễ.'},
+ {days:7,name:'Người giữ nhịp',title:'Vượt dốc đầu tiên',art:'🏕️',desc:'Bạn đang học cách nhận ra thói quen và chủ động phản hồi.'},
+ {days:14,name:'Người kiểm soát',title:'Đường lên núi',art:'⛰️',desc:'Bạn đang xây dựng một hệ thống hỗ trợ cho chính mình.'},
+ {days:30,name:'Vững vàng',title:'Đón bình minh',art:'🌅',desc:'Bạn đã có thời gian thực hành những lựa chọn mới.'},
+ {days:60,name:'Tự chủ',title:'Chạm mây',art:'🏔️',desc:'Tiếp tục giữ những thói quen hỗ trợ cuộc sống bạn muốn.'},
+ {days:90,name:'Phiên bản tốt hơn',title:'Chân trời mới',art:'🌌',desc:'Không phải đích cuối cùng — mà là một nền tảng mới.'}
+];
+const quotes=['Bạn không cần thắng cả cuộc đời hôm nay. Chỉ cần thắng lựa chọn tiếp theo.','Ham muốn là cảm giác, không phải mệnh lệnh. Bạn có thể chờ trước khi hành động.','Một ngày khó khăn không xóa đi những điều bạn đã học được.','Hãy làm cho lựa chọn tốt trở nên dễ dàng hơn, thay vì chỉ dựa vào ý chí.','Tiến bộ nhỏ, lặp lại đủ lâu, sẽ tạo nên khác biệt.'];
+function dateKey(d=new Date()){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')}
+function load(){try{return JSON.parse(localStorage.getItem(KEY))||{checkins:[],focusMinutes:0,journals:{},plans:{},goal:'Chủ động với thói quen của mình',reminder:'21:30',memoryBest:0}}catch(e){return {checkins:[],focusMinutes:0,journals:{},plans:{},goal:'Chủ động với thói quen của mình',reminder:'21:30',memoryBest:0}}}
+let data=load(),timerDuration=120,timerLeft=120,timerInterval=null,memorySeq=[],memoryAnswer=[],memoryLevel=3,colorCorrect=0,colorScore=0,moodToday='';
+function save(){localStorage.setItem(KEY,JSON.stringify(data));render()}
+function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.style.display='block';setTimeout(()=>t.style.display='none',2200)}
+function showPage(id){document.querySelectorAll('.page').forEach(p=>p.classList.toggle('active',p.id===id));document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.page===id));if(id==='journal')loadJournal();if(id==='plan')loadPlan();if(id==='levels')renderLevels();window.scrollTo({top:0,behavior:'smooth'})}
+function currentStreak(){let n=0,d=new Date();if(!data.checkins.includes(dateKey(d)))d.setDate(d.getDate()-1);while(data.checkins.includes(dateKey(d))){n++;d.setDate(d.getDate()-1)}return n}
+function bestLevel(streak){let idx=0;levels.forEach((l,i)=>{if(streak>=l.days)idx=i});return idx}
+function render(){let s=currentStreak(),idx=bestLevel(s),lv=levels[idx],next=levels[Math.min(idx+1,levels.length-1)];document.getElementById('streak').textContent=s;document.getElementById('level-number').textContent=idx+1;document.getElementById('focus-total').textContent=data.focusMinutes||0;document.getElementById('level-name').textContent='Level '+(idx+1)+' · '+lv.name;let base=lv.days, target=next.days, pct=idx===levels.length-1?100:Math.max(0,Math.min(100,(s-base)/(target-base)*100));document.getElementById('level-progress').style.width=pct+'%';document.getElementById('level-progress2').style.width=pct+'%';document.getElementById('level-progress-label').textContent=idx===levels.length-1?'Đã mở hết':s+'/'+target+' ngày';document.getElementById('greeting').textContent=s>0?'Bạn đã giữ nhịp '+s+' ngày. Tiếp tục nhé.':'Bắt đầu từ lựa chọn tiếp theo.';document.getElementById('checkin-btn').textContent=data.checkins.includes(dateKey())?'✓ Hôm nay đã được ghi nhận':'✓ Đánh dấu hôm nay đã hoàn thành';document.getElementById('checkin-btn').disabled=data.checkins.includes(dateKey());document.getElementById('checkin-btn').style.opacity=data.checkins.includes(dateKey())?.72:1;document.getElementById('quote').textContent='“'+quotes[Math.floor(Date.now()/86400000)%quotes.length]+'”';document.getElementById('today-pill').textContent=new Date().toLocaleDateString('vi-VN',{day:'numeric',month:'short'});document.getElementById('reminder-time').value=data.reminder||'21:30';document.getElementById('reminder-status').textContent='Giờ nhắc đã lưu: '+(data.reminder||'21:30');document.getElementById('goal-name').value=data.goal||'Chủ động với thói quen của mình';renderLevels()}
+function checkIn(){if(data.checkins.includes(dateKey()))return;data.checkins.push(dateKey());save();toast('Đã ghi nhận hôm nay. Tốt lắm!')}
+function renderLevels(){let s=currentStreak(),idx=bestLevel(s),lv=levels[idx],next=levels[Math.min(idx+1,levels.length-1)];document.getElementById('current-art').textContent=lv.art;document.getElementById('current-level-title').textContent='Level '+(idx+1)+' · '+lv.name;document.getElementById('current-level-desc').textContent=lv.desc;document.getElementById('next-milestone').textContent=idx===levels.length-1?'Bạn đã mở toàn bộ mốc!':`Còn ${Math.max(0,next.days-s)} ngày theo mục tiêu để mở “${next.name}”.`;document.getElementById('level-list').innerHTML=levels.map((l,i)=>`<div class="level ${i===idx?'active':''} ${i>idx?'locked':''}"><div class="level-art">${i<=idx?l.art:'🔒'}</div><div class="level-body"><strong>Level ${i+1} · ${l.name}</strong><span>${l.days===0?'Bắt đầu':l.days+' ngày'}</span></div></div>`).join('')}
+function setTimer(min,el){if(timerInterval){clearInterval(timerInterval);timerInterval=null}timerDuration=min*60;timerLeft=timerDuration;document.getElementById('timer-display').textContent=fmt(timerLeft);document.getElementById('timer-start').textContent='Bắt đầu';document.querySelectorAll('.choice').forEach(x=>{if(x.closest('.panel'))x.classList.remove('selected')});el.classList.add('selected')}
+function fmt(n){return String(Math.floor(n/60)).padStart(2,'0')+':'+String(n%60).padStart(2,'0')}
+function toggleTimer(){const b=document.getElementById('timer-start');if(timerInterval){clearInterval(timerInterval);timerInterval=null;b.textContent='Tiếp tục';document.getElementById('timer-message').textContent='Đã tạm dừng';return}b.textContent='Tạm dừng';document.getElementById('timer-message').textContent='Chỉ tập trung vào một việc.';timerInterval=setInterval(()=>{timerLeft--;document.getElementById('timer-display').textContent=fmt(Math.max(0,timerLeft));if(timerLeft<=0){clearInterval(timerInterval);timerInterval=null;data.focusMinutes=(data.focusMinutes||0)+Math.round(timerDuration/60);save();b.textContent='Làm lại';document.getElementById('timer-message').textContent='Hoàn thành! Hãy ghi nhận nỗ lực của bạn.';toast('Hoàn thành phiên tập trung!')}},1000)}
+function startMemory(){memorySeq=Array.from({length:memoryLevel},()=>Math.floor(Math.random()*9)+1);memoryAnswer=[];document.getElementById('memory-prompt').innerHTML='<div class="muted">Hãy nhớ chuỗi số này</div><div class="game-number">'+memorySeq.join(' ')+'</div>';document.getElementById('memory-inputs').classList.add('hide');document.getElementById('memory-result').textContent='';document.getElementById('memory-start').textContent='Đang ghi nhớ…';setTimeout(()=>{document.getElementById('memory-prompt').textContent='Chọn các số theo đúng thứ tự';let box=document.getElementById('memory-inputs');box.innerHTML='';box.classList.remove('hide');[1,2,3,4,5,6,7,8,9].forEach(n=>{let b=document.createElement('button');b.textContent=n;b.onclick=()=>memoryPick(n);box.appendChild(b)});document.getElementById('memory-start').textContent='Chơi lại'},Math.max(1300,memoryLevel*550))}
+function memoryPick(n){memoryAnswer.push(n);if(memoryAnswer.length===memorySeq.length){let ok=memorySeq.every((v,i)=>v===memoryAnswer[i]);document.getElementById('memory-result').textContent=ok?'Chính xác! Bạn có thể thử chuỗi dài hơn.':'Chưa khớp — không sao, hãy thử lại.';if(ok){memoryLevel=Math.min(7,memoryLevel+1);if(memoryLevel-1>(data.memoryBest||0))data.memoryBest=memoryLevel-1;save()}else memoryLevel=Math.max(3,memoryLevel-1);document.getElementById('memory-inputs').classList.add('hide')}}
+const colors=[{name:'Xanh dương',hex:'#5a8cff'},{name:'Đỏ',hex:'#ff656f'},{name:'Xanh lá',hex:'#47d7a5'},{name:'Vàng',hex:'#ffd477'}];
+function newColorRound(){colorCorrect=Math.floor(Math.random()*4);let word=Math.floor(Math.random()*4);document.getElementById('color-word').textContent=colors[word].name;document.getElementById('color-word').style.color=colors[colorCorrect].hex;document.getElementById('color-result').textContent='Chọn màu mực, không chọn nghĩa của từ.';document.querySelectorAll('#color-options button').forEach((b,i)=>{b.textContent=colors[i].name;b.onclick=()=>colorAnswer(i)})}
+function colorAnswer(i){let ok=i===colorCorrect;document.getElementById('color-result').textContent=ok?'Đúng! Giữ sự chú ý vào nhiệm vụ.':'Chưa đúng. Hít thở rồi thử lượt mới.';if(ok){data.focusMinutes=(data.focusMinutes||0);save()}}
+function loadJournal(){document.getElementById('journal-date').textContent=new Date().toLocaleDateString('vi-VN',{weekday:'long',day:'numeric',month:'long'});let j=data.journals[dateKey()]||{};document.getElementById('journal-good').value=j.good||'';document.getElementById('journal-trigger').value=j.trigger||'';document.getElementById('journal-learn').value=j.learn||'';moodToday=j.mood||'';document.querySelectorAll('#mood-choices .choice').forEach(b=>b.classList.toggle('selected',b.textContent.includes(moodToday)))}
+function setMood(mood,el){moodToday=mood;document.querySelectorAll('#mood-choices .choice').forEach(b=>b.classList.remove('selected'));el.classList.add('selected')}
+function saveJournal(){data.journals[dateKey()]={mood:moodToday,good:document.getElementById('journal-good').value,trigger:document.getElementById('journal-trigger').value,learn:document.getElementById('journal-learn').value,savedAt:new Date().toISOString()};save();toast('Đã lưu nhật ký trên thiết bị')}
+function loadPlan(){document.getElementById('plan-date').textContent='Cho ngày '+new Date(Date.now()+86400000).toLocaleDateString('vi-VN',{day:'numeric',month:'numeric'});let p=data.plans[dateKey(new Date(Date.now()+86400000))]||{};document.getElementById('plan-main').value=p.main||'';document.getElementById('plan-body').value=p.body||'';document.getElementById('plan-urge').value=p.urge||'';document.getElementById('plan-env').value=p.env||''}
+function savePlan(){let k=dateKey(new Date(Date.now()+86400000));data.plans[k]={main:document.getElementById('plan-main').value,body:document.getElementById('plan-body').value,urge:document.getElementById('plan-urge').value,env:document.getElementById('plan-env').value};save();toast('Đã lưu kế hoạch cho ngày mai')}
+function saveReminder(){data.reminder=document.getElementById('reminder-time').value||'21:30';save();toast('Đã lưu giờ nhắc')}
+async function requestNotification(){if(!('Notification'in window)){toast('Safari hiện tại không hỗ trợ thông báo web theo cách này');return}try{let p=await Notification.requestPermission();document.getElementById('reminder-status').textContent=p==='granted'?'Đã cho phép thông báo. Lưu ý: web tĩnh không tự chạy đúng giờ khi đóng.':'Chưa cấp quyền thông báo.';toast(p==='granted'?'Đã cấp quyền thông báo':'Chưa cấp quyền')}catch(e){toast('Không thể bật thông báo trên trình duyệt này')}}
+function saveGoal(){data.goal=document.getElementById('goal-name').value.trim()||'Chủ động với thói quen của mình';save();toast('Đã lưu mục tiêu')}
+function exportData(){let blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='ban-linh-backup-'+dateKey()+'.json';a.click();URL.revokeObjectURL(url);toast('Đã xuất bản sao')}
+function importData(){let f=document.getElementById('import-file').files[0];if(!f){toast('Hãy chọn tệp JSON trước');return}let r=new FileReader();r.onload=()=>{try{let d=JSON.parse(r.result);if(!Array.isArray(d.checkins)||!d.journals||!d.plans)throw Error();data=d;save();toast('Đã khôi phục dữ liệu')}catch(e){toast('Tệp không đúng định dạng bản sao của ứng dụng')}};r.readAsText(f)}
+function resetData(){if(confirm('Xóa toàn bộ lịch sử, nhật ký và kế hoạch trên thiết bị này?')){localStorage.removeItem(KEY);data=load();save();toast('Đã đặt lại dữ liệu')}}
+document.getElementById('today-pill').textContent=new Date().toLocaleDateString('vi-VN',{day:'numeric',month:'short'});newColorRound();render();loadJournal();
+if('serviceWorker'in navigator && location.protocol.startsWith('http'))window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
+</script>
+</body></html>
