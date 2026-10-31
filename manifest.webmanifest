@@ -1,11 +1,12 @@
 {
-  "name": "Bản Lĩnh — Mỗi ngày tốt hơn",
+  "name": "Bản Lĩnh — Tu luyện mỗi ngày",
   "short_name": "Bản Lĩnh",
   "start_url": "./",
+  "scope": "./",
   "display": "standalone",
-  "background_color": "#0b1224",
-  "theme_color": "#101a35",
-  "description": "Theo dõi mục tiêu cá nhân, rèn tập trung và tổng kết mỗi ngày.",
+  "background_color": "#09142b",
+  "theme_color": "#0b1730",
+  "description": "Theo dõi hành trình, rèn tập trung và tổng kết mỗi ngày.",
   "icons": [
     {
       "src": "icon-192.png",
